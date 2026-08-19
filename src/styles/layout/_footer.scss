@@ -1,0 +1,74 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
+.footer-container {
+    background-color: $dark-light;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    border-top: 1px solid $white;
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+
+
+
+    @include breakpoint (tablet) {
+        margin-left: 32px;
+        margin-right: 32px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 30px;
+        padding-bottom: 40px;
+
+    }
+
+    @include breakpoint(desktop-xl){
+        margin-left: 165px;
+        margin-right: 165px;
+        padding-top: 48px;
+        padding-bottom: 92px;
+    }
+
+    &__logo {
+        font-family: $title-typography;
+        font-size: clamp(24px, 6.4vw, 32px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px;
+        letter-spacing: -0.333px;
+
+    }
+
+    .nav-redes {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        align-items: center;
+
+        @include breakpoint(tablet) {
+            gap: 30px;
+        }
+
+
+
+        &__line {
+            svg {
+                width: clamp(24px, 5.3vw, 24.6px);
+                height: clamp(20px, 5.3vw, 24.6px);
+                fill: $white;
+                &:hover{
+                    fill: $green-electro;
+                    
+                }
+            }
+        }
+    }
+}

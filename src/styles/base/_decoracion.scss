@@ -1,0 +1,93 @@
+@use '../abstracts/mixins' as *;
+
+.header-hero {
+    background-image: url(../../img/elipse.png), url(../../img/circle.svg);
+    background-repeat: no-repeat, no-repeat;
+    background-size: 530px, 129px;
+    background-position-x: left -340px, right -60px;
+    background-position-y: top 120px, top 235px;
+
+    @include breakpoint(tablet) {
+        background-image: url(../../img/elipse.png);
+        background-position-x: left -260px, ;
+        background-position-y: top 80px, ;
+        position: relative;
+
+        &::after {
+            content: " ";
+            background-image: url(../../img/circle.svg);
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 1;
+            width: 129px;
+            height: 129px;
+            bottom: 0;
+            right: -60px;
+
+            @include breakpoint(desktop-xl){
+                bottom: 40px;
+                right: 550px;
+            }
+
+        }
+    }
+
+    @include breakpoint (desktop-xl) {
+        background-position-x: left -100px, ;
+        background-position-y: top 150px,
+    }
+}
+
+.header-skills {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 530px;
+        height: 129px;
+        background-image: url(../../img/elipse.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: 530px;
+        right: -370px;
+
+        @include breakpoint(tablet) {
+            top: 390px;
+
+        }
+
+        @include breakpoint(desktop-xl){
+            top: 250px;
+            right: -400px;
+        }
+
+    }
+}
+
+
+.form-contact {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 530px;
+        height: 129px;
+        background-image: url(../../img/elipse.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        right: 200px;
+        top: 200px;
+
+        @include breakpoint(tablet) {
+            right: 450px;
+            top: 300px;
+        }
+
+        @include breakpoint(desktop-xl){
+            right: 1000px;
+        }
+
+    }
+}

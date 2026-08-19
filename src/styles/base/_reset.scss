@@ -1,0 +1,31 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as*;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 375px;
+  color: $white;
+  font-family: $text-typography;
+  background-color: $dark;
+  overflow-x: hidden;
+ 
+
+
+
+}
+
+body {
+  overflow-x: hidden;
+    @include breakpoint(desktop){
+    max-width: 1440px;
+    margin: auto;
+    
+  }
+}

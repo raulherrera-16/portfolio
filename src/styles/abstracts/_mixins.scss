@@ -1,0 +1,62 @@
+@use 'variables' as *;
+
+// ─── Responsive (mobile-first) ───
+@mixin breakpoint($bp) {
+  @if $bp ==mobile {
+    @media (min-width: $bp-mobile) {
+      @content;
+    }
+  }
+
+  @else if $bp ==tablet {
+    @media (min-width: $bp-tablet) {
+      @content;
+    }
+  }
+
+  @else if $bp ==desktop-xl {
+    @media (min-width: $bp-desktop-xl) {
+      @content;
+    }
+  }
+}
+
+@mixin button() {
+  color: $white;
+  font-family: $title-typography;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 2.286px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid $green-electro;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+
+  &:hover {
+    color: $green-electro;
+    cursor: pointer;
+  }
+
+}
+
+@mixin form-hover() {
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $white
+  }
+
+  &:placeholder-shown {
+    border-bottom: 1px solid $white ;
+  }
+
+  &:user-valid:not(:placeholder-shown) {
+    border-bottom: 1px solid $green-electro ;
+  }
+
+  &:user-invalid:not(:placeholder-shown) {
+    border-bottom: 1px solid $red-electro;
+  }
+}

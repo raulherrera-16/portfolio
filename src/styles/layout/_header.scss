@@ -1,0 +1,328 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.header-hero {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 20px;
+    position: relative;
+    display: grid;
+    grid-template-areas: ". hero-logo ."
+        ". hero-nav ."
+        ". hero-img ."
+        " info info info"
+    ;
+    grid-template-columns: 1fr 46.4vw 1fr;
+    grid-template-rows: 8.5vw 8.5vw 64.53vw 1fr;
+    gap: 20px;
+
+    @include breakpoint(tablet) {
+        padding-left: 32px;
+        padding-right: 0;
+        padding-top: 0;
+        grid-template-areas: "hero-tablet-logo hero-tablet-nav"
+            "hero-tablet-info hero-tablet-img";
+        grid-template-columns: 1fr 41.92vw;
+        grid-template-rows: 4.16vw 70.3vw;
+        gap: 0;
+
+    }
+
+    @include breakpoint (desktop-xl){
+        padding-left: 165px;
+        padding-right: 165px;
+        grid-template-columns: 1fr 445px;
+        grid-template-rows: 70.5px 634px ;
+    }
+
+
+    &__logo {
+        grid-area: hero-logo;
+        display: flex;
+        justify-content: center;
+        font-family: $title-typography;
+        font-size: clamp(24px, 6.4vw, 32px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: 32px;
+        letter-spacing: -0.014em;
+        
+
+        @include breakpoint(tablet) {
+            grid-area: hero-tablet-logo;
+            justify-content: flex-start;
+            letter-spacing: -0.013875em;
+            align-items: center;
+            padding-top: 30px;
+        }
+    }
+
+    &__nav {
+        grid-area: hero-nav;
+
+        @include breakpoint(tablet) {
+            grid-area: hero-tablet-nav;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            padding-right: 32px;
+            padding-top: 30px;
+        }
+
+        .nav-redes {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            gap: 25px;
+
+            @include breakpoint(tablet) {
+                gap: 30px;
+
+
+            }
+
+            &__line {
+                svg {
+                    width: clamp(20px, 5.3vw, 24.6px);
+                    height: clamp(20px, 5.3vw, 24.6px);
+                    fill: $white;
+                    &:hover{
+                        fill: $green-electro;
+                    }
+                }
+            }
+
+        }
+    }
+
+    &__image {
+        grid-area: hero-img;
+        width: 46.4vw;
+        align-self: self-end;
+
+        @include breakpoint(tablet) {
+            grid-area: hero-tablet-img;
+            margin-top: 73px;
+            align-self: self-end;
+        }
+
+        @include breakpoint(desktop-xl){
+            width: 445px;
+            align-self: self-start;
+        }
+    }
+
+    &::before {
+        content: "";
+        grid-column: 2;
+        grid-row: 1/4;
+        background: linear-gradient(180deg, rgba(36, 36, 36, 0.00) 0.65%, #242424 100%);
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+
+        @include breakpoint(tablet){
+            background-color: $dark-light;
+        }
+
+        @include breakpoint(desktop-xl){
+            background: $dark-light;
+        }
+
+
+    }
+}
+
+
+
+.header-hero-info {
+
+    grid-area: info;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-bottom: 82px;
+
+    @include breakpoint(tablet) {
+        grid-area: hero-tablet-info;
+        padding: 0;
+        gap: 0;
+        min-width: 0;
+
+    }
+
+    &__jump {
+        display: none;
+
+        @include breakpoint(tablet) {
+            display: inline;
+        }
+
+        @include breakpoint (desktop-xl) {
+            display: none;
+        }
+    }
+
+    &__title {
+        font-family: $title-typography;
+        font-size: clamp(40px, 10.67vw, 72px);
+        font-style: normal;
+        font-weight: 700;
+        line-height: clamp(40px, 10.67vw, 72px);
+        letter-spacing: -0.0284em;
+        text-align: center;
+
+        @include breakpoint(tablet) {
+            margin-top: 90px;
+            font-size: clamp(72px, 9.375vw, 88px);
+            line-height: clamp(72px, 9.375vw, 88px);
+            letter-spacing: -0.028em;
+            text-align: start;
+            width: clamp(433px, 57.68vw, 706px);
+
+
+        }
+
+        @include breakpoint(desktop-xl){
+            width: 709px;
+            margin-top: 127px;
+        }
+
+    }
+
+    &__name {
+        border-bottom: 4px solid $green-electro ;
+
+        @include breakpoint(tablet) {
+            border-width: 6px;
+        }
+    }
+
+    &__text {
+        text-align: center;
+        font-size: clamp(16px, 4.27vw, 18px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: clamp(26px, 6.9vw, 28px);
+        color: $grey;
+
+        @include breakpoint(tablet) {
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 28px;
+            text-align: start;
+            margin-top: 60px
+        }
+
+        @include breakpoint(desktop-xl){
+            width: 445px;
+            margin-top: 43px
+        }
+
+    }
+
+    &__button {
+        @include button();
+        align-self: center;
+
+        @include breakpoint(tablet) {
+            align-self: flex-start;
+            margin-top: 34px;
+        }
+
+        @include breakpoint(desktop-xl){
+            margin-top: 66px;
+        }
+    }
+}
+
+
+
+.header-skills {
+    border-top: 1px solid $white;
+    padding-top: 41px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid $white;
+    margin-left: 16px;
+    margin-right: 16px;
+
+    @include breakpoint(tablet) {
+        margin-top: 62px;
+        margin-left: 32px;
+        margin-right: 32px;
+        padding-top: 53px;
+        padding-bottom: 100px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        row-gap: 52px;
+        align-items: flex-start;
+        border-bottom: none;
+    }
+
+    @include breakpoint(desktop-xl){
+        margin-top:170px;
+        margin-left: 165px;
+        margin-right: 165px;
+        padding-top: 73px;
+        padding-bottom: 140px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 58px;
+    }
+
+
+
+
+    &__skill {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include breakpoint(tablet) {
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        span:first-of-type {
+            font-family: $title-typography;
+            font-size: clamp(32px, 8.53vw, 48px);
+            font-style: normal;
+            font-weight: 700;
+            line-height: 40px;
+            letter-spacing: -1px;
+
+            @include breakpoint(tablet) {
+                font-size: 48px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 56px;
+                letter-spacing: -1.5px;
+            }
+        }
+
+        span:nth-of-type(2) {
+            color: $grey;
+            font-size: clamp(16px, 4.27vw, 18px);
+            font-style: normal;
+            font-weight: 500;
+            line-height: 26px;
+
+            @include breakpoint(tablet) {
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 28px
+            }
+
+        }
+    }
+}
